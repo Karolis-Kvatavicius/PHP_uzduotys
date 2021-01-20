@@ -1,0 +1,8 @@
+BINARY SYSTEM
+The binary number system, also called the base-2 number system, is a method of representing numbers that counts by using combinations of only two numerals: zero (0) and one (1). Computers use the binary number system to manipulate and store all of their data including numbers, words, videos, graphics, and music. The term bit, the smallest unit of digital technology, stands for "BInary digiT." A byte is a group of eight bits. A kilobyte is 1,024 bytes or 8,192 bits. The advantage of the binary system is its simplicity.
+
+OCTAL SYSTEM
+The main advantage of using Octal numbers is that it uses less digits than decimal and Hexadecimal number system. So, it has fewer computations and less computational errors. It uses only 3 bits to represent any digit in binary and easy to convert from octal to binary and vice-versa.
+
+HEXADECIMAL SYSTEM
+The Hexadecimal, or Hex, numbering system is commonly used in computer and digital systems to reduce large strings of binary numbers into a sets of four digits for us to easily understand. The word “Hexadecimal” means sixteen because this type of digital numbering system uses 16 different digits from 0-to-9, and A-to-F. Hexadecimal Numbers group binary numbers into sets of four digits. To convert a binary sequence into an equivalent hexadecimal number, we must first group the binary digits into a set of 4-bits. These binary sets can have any value from 010 ( 00002 ) to 1510 ( 11112 ) representing the hexadecimal equivalent of  0 through to F.

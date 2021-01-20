@@ -1,5 +1,5 @@
 <?php
-require "autoloader.php";
+require "../autoloader.php";
 
 $amphibiousCar = new AmphibiousMercedes();
 echo "<pre>";
