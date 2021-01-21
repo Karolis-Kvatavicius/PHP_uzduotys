@@ -2,7 +2,7 @@
 
 class Staciakampis extends Forma {
 
-        private $krastines = ["plotis" => 1, "ilgis" => 5];
+        protected $krastines = ["plotis" => 1, "ilgis" => 5];
 
         public function __construct($plotis, $ilgis) {
             $this->krastines["plotis"] = $plotis;
@@ -10,7 +10,7 @@ class Staciakampis extends Forma {
         }
         
         function perimetras() {
-            return array_sum($this->krastines);
+            return array_sum($this->krastines)*2;
         }
 
         function plotas() {

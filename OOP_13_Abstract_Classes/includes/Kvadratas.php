@@ -1,11 +1,10 @@
 <?php
 
-class Kvadratas extends Forma {
-
-        private $krastine;
+class Kvadratas extends Staciakampis {
 
         public function __construct($krastine) {
-            $this->krastine = $krastine;
+            $this->krastine["plotis"] = $krastine;
+            $this->krastine["ilgis"] = $krastine;
         }
         
        public function perimetras() {
