@@ -2,9 +2,10 @@
 
 class Tunas extends PlaukiojantysGyvunai {
     
-    function __construct($svoris)
+    function __construct($svoris, $regionas)
     {
         $this->svoris = $svoris;
+        $this->regionas = $regionas;
     }
 
     function valgo($obj) {

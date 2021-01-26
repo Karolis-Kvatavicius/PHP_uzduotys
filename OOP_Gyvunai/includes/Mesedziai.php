@@ -2,6 +2,8 @@
 
 abstract class Mesedziai extends Gyvunai {
 
+        protected $dantuAstrumas;
+
         function valgo($obj) {
             if(get_class($obj) == "Kiskis") {
                 echo get_class($obj)." suvalgytas<br>";

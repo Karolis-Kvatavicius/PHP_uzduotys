@@ -3,6 +3,7 @@
 abstract class Gyvunai {
 
     protected $svoris;
+    protected $regionas;
 
     function getSvoris()
     {

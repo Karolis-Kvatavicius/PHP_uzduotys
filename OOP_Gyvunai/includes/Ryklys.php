@@ -1,10 +1,14 @@
 <?php
 
 class Ryklys extends PlaukiojantysGyvunai {
+
+    private $dantuAstrumas;
     
-    function __construct($svoris)
+    function __construct($svoris, $regionas, $dantuAstrumas)
     {
         $this->svoris = $svoris;
+        $this->regionas = $regionas;
+        $this->dantuAstrumas = $dantuAstrumas;
     }
 
     function valgo($obj) {

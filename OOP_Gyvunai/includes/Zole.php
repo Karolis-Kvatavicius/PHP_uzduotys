@@ -2,10 +2,12 @@
 
 class Zole {
     private $svoris;
+    private $regionas;
 
-    function __construct($svoris)
+    function __construct($svoris, $regionas)
     {
         $this->svoris = $svoris;
+        $this->regionas = $regionas;
     }
 
     function getSvoris()
