@@ -1,8 +1,7 @@
 <?php
 
-abstract class PlaukiojantysGyvunai extends Gyvunai {
+interface PlaukiojantysGyvunai {
 
-    protected $regionas;
-
-    abstract function plaukioja();
+    function plaukioja();
+    
 }

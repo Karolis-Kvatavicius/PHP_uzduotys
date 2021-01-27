@@ -38,13 +38,19 @@ if ($mysqli->connect_errno) {
             <label for="mesedis">Mesėdis</label><br><br>
         </div>
 
+         <!-- gyvuno pavadinimas -->
+        <div style="display: none;" id="pavadinimas">
+        <!-- ELEMENTAI SUKURIAMI SU JS -->
+        </div>
+
         <!-- Laukai savybiu ivedimui -->
+        <br>
         <div style="display: none;" id="savybes">
             <input required type="text" id="svoris" name="svoris" placeholder="Svoris">
             <br>
-            <input required style="display: none;" type="number" min="1" max="10" id="dantu_astrumas" name="dantu_astrumas" placeholder="Dantų aštrumas">
+            <input style="display: none;" type="number" min="1" max="10" id="dantu_astrumas" name="dantu_astrumas" placeholder="Dantų aštrumas">
 
-            <select name="regionas" id="regionas">
+            <select required name="regionas" id="regionas">
 
                 <?php
                 while ($row = $result->fetch_assoc()) {
@@ -61,22 +67,19 @@ if ($mysqli->connect_errno) {
 
     </form><br>
     <?php
+    // OBJEKTO SUKURIMAS IR SPAUDINIMAS
     if (isset($_POST['pateikti'])) {
 
         function makeAnimal()
         {
-            if ($_POST['tipas'] == "zemes_gyvis" && $_POST['mesedis_zoledis'] == "zoledis") {
-                return new Kiskis($_POST['svoris'], $_POST['regionas']);
-            } else if ($_POST['tipas'] == "vandens_gyvis" && $_POST['mesedis_zoledis'] == "zoledis") {
-                return new Tunas($_POST['svoris'], $_POST['regionas']);
-            } else if ($_POST['tipas'] == "vandens_gyvis" && $_POST['mesedis_zoledis'] == "mesedis") {
-                return new Ryklys($_POST['svoris'], $_POST['regionas'], $_POST['dantu_astrumas']);
-            } else if ($_POST['tipas'] == "zemes_gyvis" && $_POST['mesedis_zoledis'] == "mesedis") {
-                return new Liutas($_POST['svoris'], $_POST['regionas'], $_POST['dantu_astrumas']);
-            } else {
-                return  new Zole($_POST['svoris'], $_POST['regionas']);
-            }
+          $dantuAstrumas = "";
+          if (!empty($_POST['dantu_astrumas'])) {
+              $dantuAstrumas = ", '".$_POST['dantu_astrumas']."'";
+          } 
+          $gyvunas = eval("return new ".$_POST['gyvuno_pavadinimas']."('".$_POST['svoris']."', '".$_POST['regionas']."'".$dantuAstrumas.");");
+          print_r($gyvunas);
         }
+        
         echo "<pre>";
         print_r(makeAnimal());
         echo "</pre>";

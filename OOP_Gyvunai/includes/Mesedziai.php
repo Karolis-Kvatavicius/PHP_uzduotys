@@ -1,19 +1,20 @@
 <?php
 
-abstract class Mesedziai extends Gyvunai {
+abstract class Mesedziai extends Gyvunai
+{
 
-        protected $dantuAstrumas;
+    protected $dantuAstrumas;
 
-        function valgo($obj) {
-            if(get_class($obj) == "Kiskis") {
-                echo get_class($obj)." suvalgytas<br>";
-                if($obj->getSvoris() * 100 / $this->svoris < 1) {
-                    echo get_class($this)." vis dar alkanas<br>";
-                }
-                $this->svoris += $obj->getSvoris();
-                // unset($obj);
-            } else {
-                echo get_class($obj)." nevalgomas<br>";
+    function valgo($obj)
+    {
+        if (get_parent_class($obj) == "Zoledziai" && class_implements($obj) === class_implements($this)) {
+            echo get_class($obj) . " suvalgytas<br>";
+            if ($obj->getSvoris() * 100 / $this->svoris < 1) {
+                echo get_class($this) . " vis dar alkanas<br>";
             }
+            $this->svoris += $obj->getSvoris();
+        } else {
+            echo get_class($obj) . " nevalgomas<br>";
         }
+    }
 }
