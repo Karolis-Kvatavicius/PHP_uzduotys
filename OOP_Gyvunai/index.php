@@ -76,10 +76,9 @@ if ($mysqli->connect_errno) {
           if (!empty($_POST['dantu_astrumas'])) {
               $dantuAstrumas = ", '".$_POST['dantu_astrumas']."'";
           } 
-          $gyvunas = eval("return new ".$_POST['gyvuno_pavadinimas']."('".$_POST['svoris']."', '".$_POST['regionas']."'".$dantuAstrumas.");");
-          print_r($gyvunas);
+          return eval("return new ".$_POST['gyvuno_pavadinimas']."('".$_POST['svoris']."', '".$_POST['regionas']."'".$dantuAstrumas.");");
         }
-        
+
         echo "<pre>";
         print_r(makeAnimal());
         echo "</pre>";
