@@ -10,6 +10,7 @@ if (mysqli_error($link) != "") {
 
 $sql = 'SELECT id, author, shortContent, content, publishDate, type, addDate, title, preview FROM articles ORDER BY type, publishDate DESC;';
 
+mysqli_autocommit($link, 1);
 $records = mysqli_query($link, $sql);
 
 $articles = [];

@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-
+    <a href="enter_article_view.php">Add new article</a>
     <?php
     require "../controllers/data.php";
 
@@ -15,8 +15,8 @@
         exit();
     }
     foreach ($articles as $article) {
-        $link = "<a href='views/images_preview.php?article_id=".$article->getID()."'>Preview images</a>";
-        $article_content = "<a href='views/article_view.php?article_id=".$article->getID()."'>Article content</a>";
+        $link = "<a href='images_preview.php?article_id=".$article->getID()."'>Preview images</a>";
+        $article_content = "<a href='article_view.php?article_id=".$article->getID()."'>Article content</a>";
         $article->printInfo($link, $article_content);
     }
     ?>
