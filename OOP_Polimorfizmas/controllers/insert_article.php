@@ -55,5 +55,5 @@ if(in_array(false, $queries, true)) {
     echo "Insert error";
 } else {
     mysqli_commit($link);
-    }
+}
 }
