@@ -20,6 +20,10 @@ require '../controllers/insert_article.php';
         <textarea name="short_content" id="" cols="30" rows="10" placeholder="Short content"></textarea><br><br>
         <textarea name="content" id="" cols="30" rows="10" placeholder="Full content"></textarea><br><br>
         <input name="preview" type="text" placeholder="Preview image link"><br><br>
+        <!-- additional images -->
+        <input name="additional_image_1" type="text" placeholder="Additional image 1"><br>
+        <input name="additional_image_2" type="text" placeholder="Additional image 2"><br>
+        <input name="additional_image_3" type="text" placeholder="Additional image 3"><br><br>
         <label for="publish_date">Publish date</label><br>
         <input name="publish_date" id="publish_date" type="date"><br><br>
         <label for="type">Choose Article Type:</label><br>

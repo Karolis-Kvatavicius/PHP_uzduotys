@@ -21,42 +21,59 @@ while ($record = $records->fetch_array(MYSQLI_ASSOC)) {
     $straipsnio_temos[] = $record;
 }
 
+// get article types
 $article_classes = file_get_contents("../models/classes.php");
 preg_match_all("/class (\w+) /i", $article_classes, $matches);
 
-if(isset($_POST['submit'])) {
+if (isset($_POST['submit'])) {
 
-unset($_POST['submit']);
-$author = $_POST['author'];
-$short_content = $_POST['short_content'];
-$content = $_POST['content'];
-$publish_date = $_POST['publish_date'];
-$type = $_POST['type'];
-$title = $_POST['title'];
-$preview = $_POST['preview'];
-$temos = array_slice($_POST, 7, NULL, true);
+    unset($_POST['submit']);
+    $author = $_POST['author'];
+    $short_content = $_POST['short_content'];
+    $content = $_POST['content'];
+    $publish_date = $_POST['publish_date'];
+    $type = $_POST['type'];
+    $title = $_POST['title'];
+    $preview = $_POST['preview'];
+    $temos = array_slice($_POST, 10, NULL, true);
 
-$queries = [];
-mysqli_begin_transaction($link);
+    $searchFor = "/^additional_image/";
+    $additional_images = array_filter($_POST, function ($key) use ($searchFor) {
+        return preg_match($searchFor, $key);
+    }, ARRAY_FILTER_USE_KEY);
 
-$sql = "INSERT INTO articles(author, shortContent, content, publishDate, type, title, preview) 
+    $queries = [];
+    mysqli_begin_transaction($link);
+
+    $sql = "INSERT INTO articles(author, shortContent, content, publishDate, type, title, preview) 
             VALUES('$author', '$short_content', '$content', '$publish_date', '$type', '$title', '$preview');";
-$queries[] = mysqli_query($link, $sql);
+    $queries['insert_article'][] = mysqli_query($link, $sql);
 
-$straipsnio_id = mysqli_insert_id($link);
+    $straipsnio_id = mysqli_insert_id($link);
 
-$sql = "INSERT INTO images(straipsnio_id, link) VALUES('$straipsnio_id', '$preview');";
-$queries[] = mysqli_query($link, $sql);
+    foreach ($additional_images as $image) {
+        $sql = "INSERT INTO images(straipsnio_id, link) VALUES('$straipsnio_id', '$image');";
+        $queries['additional_images'][] = mysqli_query($link, $sql);
+    }
 
-foreach($temos as $tema) {
-    $sql = "INSERT INTO straipsniai_temos(straipsnio_id, temos_id) VALUES('$straipsnio_id', '$tema');";
-    $queries[] = mysqli_query($link, $sql);
-}
+    foreach ($temos as $tema) {
+        $sql = "INSERT INTO straipsniai_temos(straipsnio_id, temos_id) VALUES('$straipsnio_id', '$tema');";
+        $queries['temos'][] = mysqli_query($link, $sql);
+    }
 
-if(in_array(false, $queries, true)) {
-    mysqli_rollback($link);
-    echo "Insert error";
-} else {
-    mysqli_commit($link);
-}
+    $commit = true;
+    foreach ($queries as $key => $query) {
+        if (in_array(false, $query, true)) {
+            print_r($queries);
+            mysqli_rollback($link);
+            echo "<p>Insert error</p>";
+            $commit = false;
+            break;
+        }
+    }
+
+    if($commit) {
+        mysqli_commit($link);
+    }
+
 }
