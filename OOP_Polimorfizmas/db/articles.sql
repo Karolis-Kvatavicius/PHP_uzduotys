@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 30, 2021 at 09:08 AM
+-- Generation Time: Feb 02, 2021 at 01:54 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -44,13 +44,13 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `author`, `shortContent`, `content`, `publishDate`, `type`, `title`, `addDate`, `preview`) VALUES
-(0, 'auotritetas', 'trumpesnis turinys', 'tiesiog turinys', '2021-01-28', 'ShortArticle', 'Futuristic Title', '2021-01-28 09:03:12', 'https://s2.15min.lt/images/photos/2019/05/26/original/gitanas-nauseda-su-zmona-diana-5ceafc7dcff19.jpg'),
+(0, 'Someone Special', 'rrrrt', 'hyjujujnunu', '2021-02-27', 'PhotoArticle', 'Article Today', '2021-02-02 09:54:11', 'https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg'),
 (1, 'John Doe', 'Shorty Shorts', 'Very shorty shorts were found', '2020-04-01', 'NewsArticle', 'New Article Title', '2021-01-28 09:03:12', 'https://d3i6fh83elv35t.cloudfront.net/static/2019/09/2019-09-29T133251Z_1883087259_RC1901EB47F0_RTRMADP_3_USA-TRUMP-WHISTLEBLOWER-1024x681.jpg'),
 (2, 'Jonas Jon', 'trumptext', 'ilgesnis tekstukas', '2020-04-02', 'ShortArticle', 'Hilarious Title', '2021-01-28 09:03:12', 'https://siauliurvsb.lt/wp-content/uploads/2020/12/coronavirus-mundo-1.jpg'),
 (3, 'PetrPetras', 'velgi trumpas', 'tekstas nedidelis', '2020-04-03', 'PhotoArticle', 'Very Dark Title', '2021-01-28 09:03:12', 'https://www.polishnews.co.uk/wp-content/uploads/2020/12/1608703693_LANDSCAPE_1280-1068x600.jpeg'),
 (4, 'Vardenis su Pavarde', 'nebeturiu ideju', 'ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ', '2020-04-06', 'NewsArticle', 'Happy Title', '2021-01-28 09:03:12', 'https://cdn.images.express.co.uk/img/dynamic/153/590x/UK-weather-forecast-snow-1094487.jpg?r=1551462415030'),
-(5, 'Betkas', 'bla', 'blabla', '2020-05-04', 'NewsArticle', 'Old Title', '2021-01-28 09:03:12', 'https://www.tyla.com/cdn-cgi/image/width=720,quality=70,format=jpeg,fit=pad,dpr=1/https%3A%2F%2Fs3-images.tyla.com%2Fs3%2Fcontent%2F04cba8325f4298fc36c476946f5a9ffd.png'),
-(6, 'Veikejas', 'trumpulis', 'Ilgas tekstas', '2020-05-25', 'NewsArticle', 'Very Old Title', '2021-01-29 13:57:49', 'https://www.newstalkzb.co.nz/media/19957834/surf-life-saving-drone-little-ripper-undergoing-a-test-on-sydneys-maroubra-beach-in-barely-a-month-it-would-save-two-lives-photo_-news-corp-australia.jpg?mode=crop&width=675&height=379&quality=80&scale=both');
+(6, 'Veikejas', 'trumpulis', 'Ilgas tekstas', '2020-05-25', 'NewsArticle', 'Very Old Title', '2021-01-29 13:57:49', 'https://www.newstalkzb.co.nz/media/19957834/surf-life-saving-drone-little-ripper-undergoing-a-test-on-sydneys-maroubra-beach-in-barely-a-month-it-would-save-two-lives-photo_-news-corp-australia.jpg?mode=crop&width=675&height=379&quality=80&scale=both'),
+(7, 'auotritetas', 'trumpesnis turinys', 'tiesiog turinys', '2021-01-28', 'ShortArticle', 'Futuristic Title', '2021-02-01 09:50:10', 'https://s2.15min.lt/images/photos/2019/05/26/original/gitanas-nauseda-su-zmona-diana-5ceafc7dcff19.jpg');
 
 -- --------------------------------------------------------
 
@@ -82,13 +82,12 @@ INSERT INTO `images` (`id`, `straipsnio_id`, `link`) VALUES
 (11, 3, 'https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg'),
 (12, 3, 'https://killerattitudestatus.in/wp-content/uploads/2019/12/gud-night-images.jpg'),
 (13, 4, 'https://www.w3schools.com/w3css/img_lights.jpg'),
-(14, 5, 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Image_created_with_a_mobile_phone.png/1200px-Image_created_with_a_mobile_phone.png'),
-(15, 5, 'https://www.gettyimages.com/gi-resources/images/frontdoor/editorial/Velo/GettyImages-Velo-1088643550.jpg'),
 (16, 6, 'https://static.toiimg.com/thumb/msid-66476517,imgsize-196276,width-800,height-600,resizemode-75/66476517.jpg'),
 (17, 6, 'https://images.ctfassets.net/hrltx12pl8hq/1zlEl4XHkxeDuukJUJyQ7Y/a149a908727e2084d503dc103a620d7f/lohp-image-img-3.jpg?fit=fill&w=480&h=270'),
 (18, 6, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiT9E-DFBokH8-idRbxYheI-3Bjutkry8_Uw&usqp=CAU'),
-(19, 0, 'https://researchdigest.files.wordpress.com/2020/10/gettyimages-923494284.jpg?w=788'),
-(20, 0, 'https://www.w3schools.com/howto/img_snow.jpg');
+(19, 7, 'https://researchdigest.files.wordpress.com/2020/10/gettyimages-923494284.jpg?w=788'),
+(20, 7, 'https://www.w3schools.com/howto/img_snow.jpg'),
+(133, 0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU');
 
 -- --------------------------------------------------------
 
@@ -106,9 +105,9 @@ CREATE TABLE `straipsniai_temos` (
 --
 
 INSERT INTO `straipsniai_temos` (`straipsnio_id`, `temos_id`) VALUES
-(0, 1),
-(0, 3),
-(0, 4),
+(7, 1),
+(7, 3),
+(7, 4),
 (1, 2),
 (1, 5),
 (2, 4),
@@ -119,10 +118,10 @@ INSERT INTO `straipsniai_temos` (`straipsnio_id`, `temos_id`) VALUES
 (4, 2),
 (4, 3),
 (4, 6),
-(5, 2),
-(5, 4),
-(5, 5),
-(6, 2);
+(6, 2),
+(0, 1),
+(0, 4),
+(0, 5);
 
 -- --------------------------------------------------------
 
@@ -147,6 +146,30 @@ INSERT INTO `temos` (`id`, `pavadinimas`) VALUES
 (5, 'Verslas'),
 (6, 'Orai');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vartotojai`
+--
+
+CREATE TABLE `vartotojai` (
+  `id` int(15) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `vardas` varchar(255) NOT NULL,
+  `pavarde` varchar(255) NOT NULL,
+  `slaptazodis` varchar(255) NOT NULL,
+  `role` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vartotojai`
+--
+
+INSERT INTO `vartotojai` (`id`, `username`, `vardas`, `pavarde`, `slaptazodis`, `role`) VALUES
+(1, 'auotritetas', 'Petras', 'Kazlauskas', 'vart1', 'autorius'),
+(2, 'vart2', 'Ponas', 'Bynas', 'vart2', 'standartinis_vartotojas'),
+(3, 'vart3', 'Milda', 'Varnaite', 'vart3', 'administratorius');
+
 --
 -- Indexes for dumped tables
 --
@@ -155,7 +178,8 @@ INSERT INTO `temos` (`id`, `pavadinimas`) VALUES
 -- Indexes for table `articles`
 --
 ALTER TABLE `articles`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `shortContent` (`shortContent`);
 
 --
 -- Indexes for table `images`
@@ -178,6 +202,13 @@ ALTER TABLE `temos`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `vartotojai`
+--
+ALTER TABLE `vartotojai`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -185,13 +216,19 @@ ALTER TABLE `temos`
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
 -- AUTO_INCREMENT for table `temos`
 --
 ALTER TABLE `temos`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `vartotojai`
+--
+ALTER TABLE `vartotojai`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

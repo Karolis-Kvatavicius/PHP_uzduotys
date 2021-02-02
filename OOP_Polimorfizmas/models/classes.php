@@ -78,7 +78,7 @@ class NewsArticle extends Article
         } else if(isset($user['role']) && $user['role'] == "standartinis_vartotojas") {
             echo "<a href='#'>Komentuoti</a>";
         } else if(isset($user['role']) && $user['role'] == "administratorius") {
-            echo "<a href='#'>Ištrinti straipsnį</a>";
+            echo "<a href='../controllers/delete_article.php?id=$this->id'>Ištrinti straipsnį</a>";
         }
         echo "<br><br>";
         echo '</div>';
@@ -102,7 +102,7 @@ class ShortArticle extends Article
         } else if(isset($user['role']) && $user['role'] == "standartinis_vartotojas") {
             echo "<a href='#'>Komentuoti</a>";
         } else if(isset($user['role']) && $user['role'] == "administratorius") {
-            echo "<a href='#'>Ištrinti straipsnį</a>";
+            echo "<a href='../controllers/delete_article.php?id=$this->id'>Ištrinti straipsnį</a>";
         }
         echo "<br><br>";
         echo '</div>';
@@ -127,7 +127,7 @@ class PhotoArticle extends Article
         } else if(isset($user['role']) && $user['role'] == "standartinis_vartotojas") {
             echo "<a href='#'>Komentuoti</a>";
         } else if(isset($user['role']) && $user['role'] == "administratorius") {
-            echo "<a href='#'>Ištrinti straipsnį</a>";
+            echo "<a href='../controllers/delete_article.php?id=$this->id'>Ištrinti straipsnį</a>";
         }
         echo "<br><br>";
         echo '</div>';
