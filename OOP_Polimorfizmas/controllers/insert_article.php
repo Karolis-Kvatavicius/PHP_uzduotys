@@ -21,6 +21,9 @@ while ($record = $records->fetch_array(MYSQLI_ASSOC)) {
     $straipsnio_temos[] = $record;
 }
 
+$article_classes = file_get_contents("../models/classes.php");
+preg_match_all("/class (\w+) /i", $article_classes, $matches);
+
 if(isset($_POST['submit'])) {
 
 unset($_POST['submit']);

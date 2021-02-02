@@ -14,16 +14,26 @@ require '../controllers/insert_article.php';
 
 <body>
     <a style="display: block; margin-bottom: 20px;" href="view.php">Back To Articles List</a>
-    <form action="" method="post">
-        <input name="title" type="text" placeholder="Article title"><br>
-        <input name="author" type="text" placeholder="Author"><br>
-        <textarea name="short_content" id="" cols="30" rows="10" placeholder="Short content"></textarea><br>
-        <textarea name="content" id="" cols="30" rows="10" placeholder="Full content"></textarea><br>
-        <input name="preview" type="text" placeholder="Preview image link"><br>
+    <form style="text-align: center;" action="" method="post">
+        <input name="title" type="text" placeholder="Article title"><br><br>
+        <input name="author" type="text" placeholder="Author"><br><br>
+        <textarea name="short_content" id="" cols="30" rows="10" placeholder="Short content"></textarea><br><br>
+        <textarea name="content" id="" cols="30" rows="10" placeholder="Full content"></textarea><br><br>
+        <input name="preview" type="text" placeholder="Preview image link"><br><br>
         <label for="publish_date">Publish date</label><br>
-        <input name="publish_date" id="publish_date" type="date"><br>
-        <input name="type" type="text" placeholder="Article type"><br>
-        <h3>Straipsnio temos:</h3>
+        <input name="publish_date" id="publish_date" type="date"><br><br>
+        <label for="type">Choose Article Type:</label><br>
+        <select name="type" id="type">
+        <?php
+        //  Print article types
+        foreach ($matches[1] as $match) {
+        ?>
+            <option value="<?= $match ?>"><?= $match ?></option>
+        <?php
+        }
+        ?>
+        </select><br><br>
+        <h3>Article topics:</h3>
         <?php
         foreach ($straipsnio_temos as $tema) {
         ?>
@@ -32,7 +42,7 @@ require '../controllers/insert_article.php';
         <?php
         }
         ?>
-       <br><input name="submit" type="submit" value="Add article">
+        <br><input name="submit" type="submit" value="Add article">
     </form>
 </body>
 
