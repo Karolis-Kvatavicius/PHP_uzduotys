@@ -1,16 +1,10 @@
 <?php
 
 require "../models/classes.php";
-
-$link = mysqli_connect("localhost", "root", "student", "articles");
-
-if (mysqli_error($link) != "") {
-    $errors = mysqli_error($link);
-}
+require "db_connection.php";
 
 $sql = 'SELECT id, author, shortContent, content, publishDate, type, addDate, title, preview FROM articles ORDER BY type, publishDate DESC;';
 
-mysqli_autocommit($link, 1);
 $records = mysqli_query($link, $sql);
 
 $articles = [];

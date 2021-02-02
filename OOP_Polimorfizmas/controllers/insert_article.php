@@ -1,14 +1,7 @@
 <?php
 
 require "../models/classes.php";
-
-$link = mysqli_connect("localhost", "root", "student", "articles");
-
-if (mysqli_error($link) != "") {
-    $errors = mysqli_error($link);
-}
-
-mysqli_autocommit($link, 0);
+require "db_connection.php";
 
 $sql = 'SELECT id, pavadinimas FROM temos';
 
@@ -52,8 +45,10 @@ if (isset($_POST['submit'])) {
     $straipsnio_id = mysqli_insert_id($link);
 
     foreach ($additional_images as $image) {
-        $sql = "INSERT INTO images(straipsnio_id, link) VALUES('$straipsnio_id', '$image');";
-        $queries['additional_images'][] = mysqli_query($link, $sql);
+        if ($image != "") {
+            $sql = "INSERT INTO images(straipsnio_id, link) VALUES('$straipsnio_id', '$image');";
+            $queries['additional_images'][] = mysqli_query($link, $sql);
+        }
     }
 
     foreach ($temos as $tema) {
@@ -72,8 +67,7 @@ if (isset($_POST['submit'])) {
         }
     }
 
-    if($commit) {
+    if ($commit) {
         mysqli_commit($link);
     }
-
 }

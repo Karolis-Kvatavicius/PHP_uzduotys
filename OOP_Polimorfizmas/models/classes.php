@@ -14,7 +14,7 @@ abstract class Article
     protected $images;
     protected $temos;
 
-    abstract function printInfo($link, $article_content);
+    abstract function printInfo($link, $article_content, $user);
 
 
 
@@ -63,7 +63,7 @@ abstract class Article
 
 class NewsArticle extends Article
 {
-    function printInfo($link, $article_content)
+    function printInfo($link, $article_content, $user)
     {
         echo '<div style="border: 1px solid indigo; text-align: center; margin: 20px;">';
         echo "<h2>$this->title</h2>";
@@ -73,6 +73,13 @@ class NewsArticle extends Article
         echo $link;
         echo '<br>';
         echo $article_content;
+        if(isset($user['role']) && $user['role'] == "autorius" && $user['vartotojas'] != $this->author) {
+            echo "<a href='#'>Komentuoti</a>";
+        } else if(isset($user['role']) && $user['role'] == "standartinis_vartotojas") {
+            echo "<a href='#'>Komentuoti</a>";
+        } else if(isset($user['role']) && $user['role'] == "administratorius") {
+            echo "<a href='#'>Ištrinti straipsnį</a>";
+        }
         echo "<br><br>";
         echo '</div>';
     }
@@ -80,7 +87,7 @@ class NewsArticle extends Article
 
 class ShortArticle extends Article
 {
-    function printInfo($link, $article_content)
+    function printInfo($link, $article_content, $user)
     {
         echo '<div style="border: 1px solid indigo; text-align: center; margin: 20px;">';
         echo "<h2>$this->title</h2>";
@@ -90,6 +97,13 @@ class ShortArticle extends Article
         echo $link;
         echo '<br>';
         echo $article_content;
+        if(isset($user['role']) && $user['role'] == "autorius" && $user['vartotojas'] != $this->author) {
+            echo "<a href='#'>Komentuoti</a>";
+        } else if(isset($user['role']) && $user['role'] == "standartinis_vartotojas") {
+            echo "<a href='#'>Komentuoti</a>";
+        } else if(isset($user['role']) && $user['role'] == "administratorius") {
+            echo "<a href='#'>Ištrinti straipsnį</a>";
+        }
         echo "<br><br>";
         echo '</div>';
     }
@@ -97,7 +111,7 @@ class ShortArticle extends Article
 
 class PhotoArticle extends Article
 {
-    function printInfo($link, $article_content)
+    function printInfo($link, $article_content, $user)
     {
         echo '<div style="border: 1px solid indigo; text-align: center; margin: 20px;">';
         echo "<h2>$this->title</h2>";
@@ -108,6 +122,13 @@ class PhotoArticle extends Article
         echo $link;
         echo '<br>';
         echo $article_content;
+        if(isset($user['role']) && $user['role'] == "autorius" && $user['vartotojas'] != $this->author) {
+            echo "<a href='#'>Komentuoti</a>";
+        } else if(isset($user['role']) && $user['role'] == "standartinis_vartotojas") {
+            echo "<a href='#'>Komentuoti</a>";
+        } else if(isset($user['role']) && $user['role'] == "administratorius") {
+            echo "<a href='#'>Ištrinti straipsnį</a>";
+        }
         echo "<br><br>";
         echo '</div>';
     }
