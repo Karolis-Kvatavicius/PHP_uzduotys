@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 02, 2021 at 01:54 PM
+-- Generation Time: Feb 03, 2021 at 09:30 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -44,7 +44,6 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `author`, `shortContent`, `content`, `publishDate`, `type`, `title`, `addDate`, `preview`) VALUES
-(0, 'Someone Special', 'rrrrt', 'hyjujujnunu', '2021-02-27', 'PhotoArticle', 'Article Today', '2021-02-02 09:54:11', 'https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg'),
 (1, 'John Doe', 'Shorty Shorts', 'Very shorty shorts were found', '2020-04-01', 'NewsArticle', 'New Article Title', '2021-01-28 09:03:12', 'https://d3i6fh83elv35t.cloudfront.net/static/2019/09/2019-09-29T133251Z_1883087259_RC1901EB47F0_RTRMADP_3_USA-TRUMP-WHISTLEBLOWER-1024x681.jpg'),
 (2, 'Jonas Jon', 'trumptext', 'ilgesnis tekstukas', '2020-04-02', 'ShortArticle', 'Hilarious Title', '2021-01-28 09:03:12', 'https://siauliurvsb.lt/wp-content/uploads/2020/12/coronavirus-mundo-1.jpg'),
 (3, 'PetrPetras', 'velgi trumpas', 'tekstas nedidelis', '2020-04-03', 'PhotoArticle', 'Very Dark Title', '2021-01-28 09:03:12', 'https://www.polishnews.co.uk/wp-content/uploads/2020/12/1608703693_LANDSCAPE_1280-1068x600.jpeg'),
@@ -86,8 +85,27 @@ INSERT INTO `images` (`id`, `straipsnio_id`, `link`) VALUES
 (17, 6, 'https://images.ctfassets.net/hrltx12pl8hq/1zlEl4XHkxeDuukJUJyQ7Y/a149a908727e2084d503dc103a620d7f/lohp-image-img-3.jpg?fit=fill&w=480&h=270'),
 (18, 6, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiT9E-DFBokH8-idRbxYheI-3Bjutkry8_Uw&usqp=CAU'),
 (19, 7, 'https://researchdigest.files.wordpress.com/2020/10/gettyimages-923494284.jpg?w=788'),
-(20, 7, 'https://www.w3schools.com/howto/img_snow.jpg'),
-(133, 0, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU');
+(20, 7, 'https://www.w3schools.com/howto/img_snow.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komentarai`
+--
+
+CREATE TABLE `komentarai` (
+  `id` int(15) NOT NULL,
+  `turinys` text NOT NULL,
+  `straipsnio_id` int(11) NOT NULL,
+  `vartotojo_vardas` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `komentarai`
+--
+
+INSERT INTO `komentarai` (`id`, `turinys`, `straipsnio_id`, `vartotojo_vardas`) VALUES
+(4, 'valio', 7, 'vart2');
 
 -- --------------------------------------------------------
 
@@ -118,10 +136,7 @@ INSERT INTO `straipsniai_temos` (`straipsnio_id`, `temos_id`) VALUES
 (4, 2),
 (4, 3),
 (4, 6),
-(6, 2),
-(0, 1),
-(0, 4),
-(0, 5);
+(6, 2);
 
 -- --------------------------------------------------------
 
@@ -189,6 +204,14 @@ ALTER TABLE `images`
   ADD KEY `straipsnio_id` (`straipsnio_id`);
 
 --
+-- Indexes for table `komentarai`
+--
+ALTER TABLE `komentarai`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `straipsnio_id` (`straipsnio_id`) USING BTREE,
+  ADD KEY `vartotojo_vardas` (`vartotojo_vardas`) USING BTREE;
+
+--
 -- Indexes for table `straipsniai_temos`
 --
 ALTER TABLE `straipsniai_temos`
@@ -219,6 +242,12 @@ ALTER TABLE `images`
   MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=134;
 
 --
+-- AUTO_INCREMENT for table `komentarai`
+--
+ALTER TABLE `komentarai`
+  MODIFY `id` int(15) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `temos`
 --
 ALTER TABLE `temos`
@@ -239,6 +268,13 @@ ALTER TABLE `vartotojai`
 --
 ALTER TABLE `images`
   ADD CONSTRAINT `images_ibfk_1` FOREIGN KEY (`straipsnio_id`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `komentarai`
+--
+ALTER TABLE `komentarai`
+  ADD CONSTRAINT `komentarai_ibfk_1` FOREIGN KEY (`straipsnio_id`) REFERENCES `articles` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `komentarai_ibfk_2` FOREIGN KEY (`vartotojo_vardas`) REFERENCES `vartotojai` (`username`);
 
 --
 -- Constraints for table `straipsniai_temos`
