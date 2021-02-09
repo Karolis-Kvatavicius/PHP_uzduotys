@@ -12,15 +12,27 @@
     if (isset($_COOKIE['vartotojas'])) {
     ?>
         <a href="../user_login/atsijungti.php">Logout</a><br>
-    <?php
+        <!-- TODO: Additional functionality, update user info -->
+        <a style="display: none;" href="user_zone.php">User page</a>
+        <?php
+        if ($_COOKIE['role'] == 'Administratorius') {
+        ?>
+            <a href="control_panel.php">Control Panel</a><br>
+        <?php
+        }
     } else {
-    ?>
+        ?>
         <a href="../user_login/prisijungimas.php">Login</a><br>
     <?php
     }
     ?>
-
-    <a href="enter_article_view.php">Add new article</a>
+    <?php
+    if (isset($_COOKIE['vartotojas']) && $_COOKIE['role'] == 'Autorius') {
+    ?>
+        <a href="enter_article_view.php">Add new article</a>
+    <?php
+    }
+    ?>
     <?php
     require "../controllers/data.php";
 

@@ -2,6 +2,11 @@
 <html lang="en">
 <?php
 
+if(!isset($_COOKIE['vartotojas']) || $_COOKIE['role'] != 'Autorius') {
+    header('location: view.php');
+    exit();
+}
+
 require '../controllers/insert_article.php';
 
 ?>
@@ -16,7 +21,7 @@ require '../controllers/insert_article.php';
     <a style="display: block; margin-bottom: 20px;" href="view.php">Back To Articles List</a>
     <form style="text-align: center;" action="" method="post">
         <input name="title" type="text" placeholder="Article title"><br><br>
-        <input name="author" type="text" placeholder="Author"><br><br>
+        <input name="author" type="hidden" value="<?= $_COOKIE['vartotojas'] ?>"><br><br>
         <textarea name="short_content" id="" cols="30" rows="10" placeholder="Short content"></textarea><br><br>
         <textarea name="content" id="" cols="30" rows="10" placeholder="Full content"></textarea><br><br>
         <input name="preview" type="text" placeholder="Preview image link"><br><br>

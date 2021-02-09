@@ -13,6 +13,11 @@ if (isset($_POST['prisijungimas'])) {
 
     if(is_array($row)) {
         if ($row['slaptazodis'] == $_POST['slaptazodis']) {
+            if($row['statusas'] == 'Uzblokuotas') {
+                $result = "Jūsų vartotojas laikinai nepasiekiamas. Susisiekite su administracija";
+                header('Location: ./prisijungimas.php?error=' . $result);
+                exit();
+            }
             setcookie('vartotojas', $row["username"], time() + (3600 * 4), '/');
             setcookie('vardas', $row["vardas"], time() + (3600 * 4), '/');
             setcookie('pavarde', $row["pavarde"], time() + (3600 * 4), '/');

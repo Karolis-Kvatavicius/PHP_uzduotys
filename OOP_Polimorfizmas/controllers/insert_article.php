@@ -41,25 +41,28 @@ if (isset($_POST['submit'])) {
     $sql = "INSERT INTO articles(author, shortContent, content, publishDate, type, title, preview) 
             VALUES('$author', '$short_content', '$content', '$publish_date', '$type', '$title', '$preview');";
     $queries['insert_article'][] = mysqli_query($link, $sql);
+    echo mysqli_error($link);
 
     $straipsnio_id = mysqli_insert_id($link);
-
+    echo $straipsnio_id;
     foreach ($additional_images as $image) {
         if ($image != "") {
             $sql = "INSERT INTO images(straipsnio_id, link) VALUES('$straipsnio_id', '$image');";
             $queries['additional_images'][] = mysqli_query($link, $sql);
+            echo mysqli_error($link);
         }
     }
 
     foreach ($temos as $tema) {
         $sql = "INSERT INTO straipsniai_temos(straipsnio_id, temos_id) VALUES('$straipsnio_id', '$tema');";
         $queries['temos'][] = mysqli_query($link, $sql);
+        echo mysqli_error($link);
     }
 
     $commit = true;
     foreach ($queries as $key => $query) {
         if (in_array(false, $query, true)) {
-            print_r($queries);
+            // print_r($queries);
             mysqli_rollback($link);
             echo "<p>Insert error</p>";
             $commit = false;
