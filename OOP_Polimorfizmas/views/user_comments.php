@@ -13,16 +13,20 @@ require '../controllers/control_panel/get_user_comments.php';
 
 <body style="text-align: center;">
     <?php
-    if(mysqli_num_rows($records) == 0) {
+    if (mysqli_num_rows($records) == 0) {
         header('location: ../views/control_panel.php');
         exit();
     }
-
+    ?>
+    <div style="text-align: left;">
+        <a href="control_panel.php">Get back</a>
+    </div>
+    <?php
     while ($record = $records->fetch_array(MYSQLI_ASSOC)) {
-        echo "<p><b>Komentaro id:</b> " . $record['id']. "</p>";
+        echo "<p><b>Komentaro id:</b> " . $record['id'] . "</p>";
         echo "<p>Turinys: " . $record['turinys'] . "</p>";
         echo "<p>Vartotojas: " . $record['vartotojo_vardas'] . "</p>";
-        echo "<p><a href='../controllers/control_panel/delete_user_comments.php?id=" . $record['id']. "'>Ištrinti komentarą</a></p><br>";
+        echo "<p><a href='../controllers/control_panel/delete_user_comments.php?id=" . $record['id'] . "'>Ištrinti komentarą</a></p><br>";
     }
     ?>
 </body>

@@ -3,7 +3,12 @@
 require "../db_connection.php";
 require "../../models/vartotojai.php";
 
-$sql = "UPDATE vartotojai SET statusas='Uzblokuotas' WHERE id=".$_GET['id'];
+$statusValue = "Uzblokuotas";
+if(isset($_GET['unblock']) && $_GET['unblock'] == "aktyvus") {
+    $statusValue = ucfirst($_GET['unblock']);
+}
+
+$sql = "UPDATE vartotojai SET statusas='$statusValue' WHERE id=".$_GET['id'];
 
 $records = mysqli_query($link, $sql);
 

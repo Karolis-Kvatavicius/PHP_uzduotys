@@ -29,7 +29,13 @@ abstract class Vartotojas {
         echo "</div>";
         echo "<div>";
         echo "<h4>Galimi veiksmai:</h4>";
-        echo "<p><a href='../controllers/control_panel/block_user.php?id=$this->id'>Blokuoti vartotoją</a></p>";
+
+        if($this->statusas == "Uzblokuotas") {
+            echo "<p><a href='../controllers/control_panel/block_user.php?id=$this->id&unblock=aktyvus'>Atblokuoti vartotoją</a></p>";
+        } else {
+            echo "<p><a href='../controllers/control_panel/block_user.php?id=$this->id'>Blokuoti vartotoją</a></p>";
+        }
+        
         echo "<p><a href='../controllers/control_panel/delete_only_user.php?id=$this->id'>Ištrinti tik vartotoją</a></p>";
         echo "<p><a href='user_comments.php?id=$this->id'>Vartotojo komentarai</a></p>";
         if($this->role == 'Autorius') {

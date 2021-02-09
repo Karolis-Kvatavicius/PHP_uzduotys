@@ -14,11 +14,15 @@ require '../controllers/control_panel/get_user_articles.php';
 
 <body style="text-align: center;">
     <?php
-    if(mysqli_num_rows($records) == 0) {
+    if (mysqli_num_rows($records) == 0) {
         header('location: ../views/control_panel.php');
         exit();
     }
-
+    ?>
+    <div style="text-align: left;">
+        <a href="control_panel.php">Get back</a>
+    </div>
+    <?php
     foreach ($articles as $article) {
         $article->printArticle(true, $_GET['id']);
     }
