@@ -26,7 +26,7 @@ require '../controllers/control_panel/get_user_comments.php';
         echo "<p><b>Komentaro id:</b> " . $record['id'] . "</p>";
         echo "<p>Turinys: " . $record['turinys'] . "</p>";
         echo "<p>Vartotojas: " . $record['vartotojo_vardas'] . "</p>";
-        echo "<p><a href='../controllers/control_panel/delete_user_comments.php?id=" . $record['id'] . "'>Ištrinti komentarą</a></p><br>";
+        echo "<p><a href='../controllers/control_panel/delete_user_comments.php?id=" . $record['id'] ."&userid=".$_GET['userid']."'>Ištrinti komentarą</a></p><br>";
     }
     ?>
 </body>

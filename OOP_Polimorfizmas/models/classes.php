@@ -14,6 +14,7 @@ abstract class Article
     protected $images;
     protected $temos;
     protected $komentarai;
+    protected $komentaru_skaicius;
 
     abstract function printInfo($link, $article_content, $user);
 
@@ -30,6 +31,9 @@ abstract class Article
         $this->addDate = $record['addDate'];
         $this->title = $record['title'];
         $this->preview = $record['preview'];
+        if (isset($record['komentaru_skaicius'])) {
+            $this->komentaru_skaicius = $record['komentaru_skaicius'];
+        }
         if (isset($record['images'])) {
             $this->images = explode('***', $record['images']);
         }
@@ -41,7 +45,6 @@ abstract class Article
             foreach ($temp as $value) {
                 $this->komentarai[] =  explode(';', $value);
             }
-            
         }
     }
 
@@ -52,7 +55,8 @@ abstract class Article
 
     public function printArticle($admin = false, $user = false)
     {
-        if($admin && $user) {
+        if ($admin && $user) {
+            // Articles format for admin control panel
             echo "<h1>Antraštė: $this->title</h1>";
             echo "<h3>Autorius: $this->author";
             echo "<h3>Paskelbimo data: $this->publishDate</h3>";
@@ -79,16 +83,16 @@ abstract class Article
             echo "<p>$tema</p>";
         }
         echo '<h4>Komentarai:</h4>';
-        if(!empty($this->komentarai)) {
-        foreach ($this->komentarai as $komentaras) {
-            echo "<div style='border: 1px solid indigo; margin: 0 50px 10px 50px;'>";
-            echo "<p>$komentaras[1]</p>";
-            echo "<h5>Komentavo: $komentaras[3]</h5>";
-            echo "</div>";
+        if (!empty($this->komentarai)) {
+            foreach ($this->komentarai as $komentaras) {
+                echo "<div style='border: 1px solid indigo; margin: 0 50px 10px 50px;'>";
+                echo "<p>$komentaras[1]</p>";
+                echo "<h5>Komentavo: $komentaras[3]</h5>";
+                echo "</div>";
+            }
+        } else {
+            echo "<p>Komentarų nėra...</p>";
         }
-    } else {
-        echo "<p>Komentarų nėra...</p>";
-    }
     }
 }
 
@@ -100,15 +104,17 @@ class NewsArticle extends Article
         echo "<h2>$this->title</h2>";
         echo "<p>" . $this->author . "</p>";
         echo "<p>Paskelbta: <strong>" . $this->publishDate . "</strong></p>";
-        echo "<p>" . $this->content . "</p><br>";
+        echo "<p><b>Atnaujinta:</b> <i>" . $this->addDate . "</i></p>";
+        echo "<p>" . $this->content . "</p>";
+        echo "<p>" . $this->komentaru_skaicius . " komentarų</p>";
         echo $link;
         echo '<br>';
         echo $article_content;
-        if(isset($user['role']) && $user['role'] == "Autorius" && $user['vartotojas'] != $this->author) {
+        if (isset($user['role']) && $user['role'] == "Autorius" && $user['vartotojas'] != $this->author) {
             echo "<a href='comment_view.php?id=$this->id'>Komentuoti</a>";
-        } else if(isset($user['role']) && $user['role'] == "StandartinisVartotojas") {
+        } else if (isset($user['role']) && $user['role'] == "StandartinisVartotojas") {
             echo "<a href='comment_view.php?id=$this->id'>Komentuoti</a>";
-        } else if(isset($user['role']) && $user['role'] == "Administratorius") {
+        } else if (isset($user['role']) && $user['role'] == "Administratorius") {
             echo "<a href='../controllers/delete_article.php?id=$this->id'>Ištrinti straipsnį</a>";
         }
         echo "<br><br>";
@@ -124,15 +130,17 @@ class ShortArticle extends Article
         echo "<h2>$this->title</h2>";
         echo "<p>" . $this->author . "</p>";
         echo "<p>Paskelbta: <strong>" . $this->publishDate . "</strong></p>";
-        echo "<p>" . $this->shortContent . "</p><br>";
+        echo "<p><b>Atnaujinta:</b> <i>" . $this->addDate . "</i></p>";
+        echo "<p>" . $this->shortContent . "</p>";
+        echo "<p>" . $this->komentaru_skaicius . " komentarų</p>";
         echo $link;
         echo '<br>';
         echo $article_content;
-        if(isset($user['role']) && $user['role'] == "Autorius" && $user['vartotojas'] != $this->author) {
+        if (isset($user['role']) && $user['role'] == "Autorius" && $user['vartotojas'] != $this->author) {
             echo "<a href='comment_view.php?id=$this->id'>Komentuoti</a>";
-        } else if(isset($user['role']) && $user['role'] == "StandartinisVartotojas") {
+        } else if (isset($user['role']) && $user['role'] == "StandartinisVartotojas") {
             echo "<a href='comment_view.php?id=$this->id'>Komentuoti</a>";
-        } else if(isset($user['role']) && $user['role'] == "Administratorius") {
+        } else if (isset($user['role']) && $user['role'] == "Administratorius") {
             echo "<a href='../controllers/delete_article.php?id=$this->id'>Ištrinti straipsnį</a>";
         }
         echo "<br><br>";
@@ -148,16 +156,18 @@ class PhotoArticle extends Article
         echo "<h2>$this->title</h2>";
         echo "<p>" . $this->author . "</p>";
         echo "<p>Paskelbta: <strong>" . $this->publishDate . "</strong></p>";
+        echo "<p><b>Atnaujinta:</b> <i>" . $this->addDate . "</i></p>";
         echo "<p>" . $this->type . "</p>";
-        echo '<img width="300" src="' . $this->preview . '"><br>';
+        echo '<img width="300" src="' . $this->preview . '">';
+        echo "<p>" . $this->komentaru_skaicius . " komentarų</p>";
         echo $link;
         echo '<br>';
         echo $article_content;
-        if(isset($user['role']) && $user['role'] == "Autorius" && $user['vartotojas'] != $this->author) {
+        if (isset($user['role']) && $user['role'] == "Autorius" && $user['vartotojas'] != $this->author) {
             echo "<a href='comment_view.php?id=$this->id'>Komentuoti</a>";
-        } else if(isset($user['role']) && $user['role'] == "StandartinisVartotojas") {
+        } else if (isset($user['role']) && $user['role'] == "StandartinisVartotojas") {
             echo "<a href='comment_view.php?id=$this->id'>Komentuoti</a>";
-        } else if(isset($user['role']) && $user['role'] == "Administratorius") {
+        } else if (isset($user['role']) && $user['role'] == "Administratorius") {
             echo "<a href='../controllers/delete_article.php?id=$this->id'>Ištrinti straipsnį</a>";
         }
         echo "<br><br>";

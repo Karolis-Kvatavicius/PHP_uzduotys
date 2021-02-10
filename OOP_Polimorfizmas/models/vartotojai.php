@@ -37,7 +37,7 @@ abstract class Vartotojas {
         }
         
         echo "<p><a href='../controllers/control_panel/delete_only_user.php?id=$this->id'>Ištrinti tik vartotoją</a></p>";
-        echo "<p><a href='user_comments.php?id=$this->id'>Vartotojo komentarai</a></p>";
+        echo "<p><a href='user_comments.php?userid=$this->id'>Vartotojo komentarai</a></p>";
         if($this->role == 'Autorius') {
             echo "<p><a href='user_articles.php?id=$this->id'>Vartotojo straipsniai</a></p>";
         }
@@ -49,25 +49,7 @@ abstract class Vartotojas {
 }
 
 class Administratorius extends Vartotojas {
-    public function blockUser($user) {
 
-    }
-
-    public function deleteOnlyUser($user) {
-        
-    }
-
-    public function deleteUserComments($user) {
-        
-    }
-
-    public function deleteUserArticles($user) {
-        
-    }
-
-    public function deleteUserAndAllUserInfo($user) {
-        
-    }
 }
 
 class StandartinisVartotojas extends Vartotojas {

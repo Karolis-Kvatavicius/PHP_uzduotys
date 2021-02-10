@@ -24,7 +24,6 @@ if (isset($_POST['submit'])) {
     $author = $_POST['author'];
     $short_content = $_POST['short_content'];
     $content = $_POST['content'];
-    $publish_date = $_POST['publish_date'];
     $type = $_POST['type'];
     $title = $_POST['title'];
     $preview = $_POST['preview'];
@@ -38,13 +37,12 @@ if (isset($_POST['submit'])) {
     $queries = [];
     mysqli_begin_transaction($link);
 
-    $sql = "INSERT INTO articles(author, shortContent, content, publishDate, type, title, preview) 
-            VALUES('$author', '$short_content', '$content', '$publish_date', '$type', '$title', '$preview');";
+    $sql = "INSERT INTO articles(author, shortContent, content, type, title, preview) 
+            VALUES('$author', '$short_content', '$content', '$type', '$title', '$preview');";
     $queries['insert_article'][] = mysqli_query($link, $sql);
     echo mysqli_error($link);
 
     $straipsnio_id = mysqli_insert_id($link);
-    echo $straipsnio_id;
     foreach ($additional_images as $image) {
         if ($image != "") {
             $sql = "INSERT INTO images(straipsnio_id, link) VALUES('$straipsnio_id', '$image');";

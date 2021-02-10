@@ -29,8 +29,6 @@ require '../controllers/insert_article.php';
         <input name="additional_image_1" type="text" placeholder="Additional image 1"><br>
         <input name="additional_image_2" type="text" placeholder="Additional image 2"><br>
         <input name="additional_image_3" type="text" placeholder="Additional image 3"><br><br>
-        <label for="publish_date">Publish date</label><br>
-        <input name="publish_date" id="publish_date" type="date"><br><br>
         <label for="type">Choose Article Type:</label><br>
         <select name="type" id="type">
         <?php
