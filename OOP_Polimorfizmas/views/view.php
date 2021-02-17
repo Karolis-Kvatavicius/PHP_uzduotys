@@ -12,8 +12,6 @@
     if (isset($_COOKIE['vartotojas'])) {
     ?>
         <a href="../user_login/atsijungti.php">Logout</a><br>
-        <!-- TODO: Additional functionality, update user info -->
-        <a style="display: none;" href="user_zone.php">User page</a>
         <?php
         if ($_COOKIE['role'] == 'Administratorius') {
         ?>

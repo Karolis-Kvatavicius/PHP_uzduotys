@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 09, 2021 at 08:29 AM
+-- Generation Time: Feb 17, 2021 at 05:42 PM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 8.0.0
 
@@ -32,7 +32,7 @@ CREATE TABLE `articles` (
   `author` varchar(40) NOT NULL,
   `shortContent` varchar(200) NOT NULL,
   `content` text NOT NULL,
-  `publishDate` date NOT NULL,
+  `publishDate` timestamp NOT NULL DEFAULT current_timestamp(),
   `type` varchar(40) NOT NULL,
   `title` varchar(100) DEFAULT NULL,
   `addDate` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
@@ -44,12 +44,10 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `author`, `shortContent`, `content`, `publishDate`, `type`, `title`, `addDate`, `preview`) VALUES
-(2, 'Jonas Jon', 'trumptext', 'ilgesnis tekstukas', '2020-04-02', 'ShortArticle', 'Hilarious Title', '2021-01-28 09:03:12', 'https://siauliurvsb.lt/wp-content/uploads/2020/12/coronavirus-mundo-1.jpg'),
-(3, 'PetrPetras', 'velgi trumpas', 'tekstas nedidelis', '2020-04-03', 'PhotoArticle', 'Very Dark Title', '2021-01-28 09:03:12', 'https://www.polishnews.co.uk/wp-content/uploads/2020/12/1608703693_LANDSCAPE_1280-1068x600.jpeg'),
-(4, 'Vardenis su Pavarde', 'nebeturiu ideju', 'ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ilgiausias straipsnis ', '2020-04-06', 'NewsArticle', 'Happy Title', '2021-01-28 09:03:12', 'https://cdn.images.express.co.uk/img/dynamic/153/590x/UK-weather-forecast-snow-1094487.jpg?r=1551462415030'),
-(5, 'John Doe', 'Shorty Shorts', 'Very shorty shorts were found', '2020-04-01', 'NewsArticle', 'New Article Title', '2021-02-04 13:24:23', 'https://d3i6fh83elv35t.cloudfront.net/static/2019/09/2019-09-29T133251Z_1883087259_RC1901EB47F0_RTRMADP_3_USA-TRUMP-WHISTLEBLOWER-1024x681.jpg'),
-(6, 'Veikejas', 'trumpulis', 'Ilgas tekstas', '2020-05-25', 'NewsArticle', 'Very Old Title', '2021-01-29 13:57:49', 'https://www.newstalkzb.co.nz/media/19957834/surf-life-saving-drone-little-ripper-undergoing-a-test-on-sydneys-maroubra-beach-in-barely-a-month-it-would-save-two-lives-photo_-news-corp-australia.jpg?mode=crop&width=675&height=379&quality=80&scale=both'),
-(7, 'Karolis', 'bla', 'tgtgtgtgtg', '2021-02-23', 'PhotoArticle', 'Article Today', '2021-02-04 13:06:26', 'https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg');
+(29, 'PetrPetras', 'straipsnis', 'ilgas aprasymas lalalala', '2021-02-11 07:39:48', 'PhotoArticle', 'Petro straipsnis', '2021-02-11 07:45:31', 'https://image.shutterstock.com/image-photo/adiyogi-statue-isha-foundation-coimbatore-260nw-1118016773.jpg'),
+(30, 'autorius', 'cia mano pirmas straipsnis', 'labai svarbus kontentas', '2021-02-17 16:24:39', 'PhotoArticle', 'Cool Article', '2021-02-17 16:27:14', 'https://images.indianexpress.com/2019/09/teacher-day_1.jpg'),
+(31, 'autorius', 'Lala', 'Blabla', '2021-02-17 16:25:34', 'ShortArticle', 'Kitas straipsnis', '2021-02-17 16:25:34', 'https://resize.indiatvnews.com/en/resize/newbucket/715_-/2018/02/propose-1517999844.jpg'),
+(33, 'Ponas', 'lala1', 'laaaaaaaaaaaaaaaaalllllllllllllllllaaaaaaaaaaaaaaaaaaaaaa', '2021-02-17 16:34:54', 'NewsArticle', 'Underrated', '2021-02-17 16:34:54', 'https://images.ctfassets.net/hrltx12pl8hq/4f6DfV5DbqaQUSw0uo0mWi/ff068ff5fc855601751499d694c0111a/shutterstock_376532611.jpg?fit=fill&w=800&h=300');
 
 -- --------------------------------------------------------
 
@@ -68,24 +66,12 @@ CREATE TABLE `images` (
 --
 
 INSERT INTO `images` (`id`, `straipsnio_id`, `link`) VALUES
-(1, 5, 'https://images.ctfassets.net/hrltx12pl8hq/4plHDVeTkWuFMihxQnzBSb/aea2f06d675c3d710d095306e377382f/shutterstock_554314555_copy.jpg'),
-(2, 5, 'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__340.jpg'),
-(3, 5, 'https://www.searchenginejournal.com/wp-content/uploads/2018/10/How-to-Boost-Your-Images%E2%80%99-Visibility-on-Google-Images-760x400.png'),
-(4, 2, 'https://media3.s-nbcnews.com/j/newscms/2019_41/3047866/191010-japan-stalker-mc-1121_06b4c20bbf96a51dc8663f334404a899.fit-760w.JPG'),
-(5, 2, 'https://www.freedigitalphotos.net/images/img/homepage/394230.jpg'),
-(6, 2, 'https://image.shutterstock.com/image-photo/ancient-temple-ruins-gadi-sagar-260nw-786126286.jpg'),
-(7, 2, 'https://p.bigstockphoto.com/GeFvQkBbSLaMdpKXF1Zv_bigstock-Aerial-View-Of-Blue-Lakes-And--227291596.jpg'),
-(8, 3, 'https://s23527.pcdn.co/wp-content/uploads/2020/01/100k-moon.jpg.optimal.jpg'),
-(9, 3, 'https://static.toiimg.com/photo/msid-67868104/67868104.jpg?1368689'),
-(10, 3, 'https://www.nhm.ac.uk/content/dam/nhmwww/discover/wpy-2020-winning-images/wpy-winning-image-full-width.jpg'),
-(11, 3, 'https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg'),
-(12, 3, 'https://killerattitudestatus.in/wp-content/uploads/2019/12/gud-night-images.jpg'),
-(13, 4, 'https://www.w3schools.com/w3css/img_lights.jpg'),
-(16, 6, 'https://static.toiimg.com/thumb/msid-66476517,imgsize-196276,width-800,height-600,resizemode-75/66476517.jpg'),
-(17, 6, 'https://images.ctfassets.net/hrltx12pl8hq/1zlEl4XHkxeDuukJUJyQ7Y/a149a908727e2084d503dc103a620d7f/lohp-image-img-3.jpg?fit=fill&w=480&h=270'),
-(18, 6, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQiT9E-DFBokH8-idRbxYheI-3Bjutkry8_Uw&usqp=CAU'),
-(134, 7, 'https://imgd.aeplcdn.com/476x268/bw/models/royal-enfield-classic-350-single-channel-abs--bs-vi20200303121804.jpg?q=80'),
-(135, 7, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRfrLAZZRhW85ny1UWBbuyo4_ATKJgx7dHK6Q&usqp=CAU');
+(179, 29, 'https://s23527.pcdn.co/wp-content/uploads/2020/01/100k-moon.jpg.optimal.jpg'),
+(180, 29, 'http://joombig.com/demo-extensions1/images/gallery_slider/Swan_large.jpg'),
+(181, 30, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsmbLPQoO9FCSvJPicOt2s1fY_Le0MUFk_EQ&usqp=CAU'),
+(182, 31, 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSOd256TcC6vcaQ99TYzoP0pBbch9_Q-bbrmw&usqp=CAU'),
+(183, 31, 'https://www.traveller.com.au/content/dam/images/h/1/q/a/b/k/image.related.articleLeadwide.620x349.h1qyip.png/1600986508585.jpg'),
+(185, 33, 'https://www.pics4learning.com/images/pics-banner1-1300.jpg');
 
 -- --------------------------------------------------------
 
@@ -105,13 +91,15 @@ CREATE TABLE `komentarai` (
 --
 
 INSERT INTO `komentarai` (`id`, `turinys`, `straipsnio_id`, `vartotojo_vardas`) VALUES
-(15, 'Prastai', 6, 'PetrPetras'),
-(16, 'Labai gerai', 5, 'PetrPetras'),
-(17, 'Neblogai', 3, 'Veikejas'),
-(18, 'Kazkaip nepatiko', 2, 'Veikejas'),
-(19, 'cia buvo kazimir', 6, 'Kazimir'),
-(20, 'kazimirui netinka', 3, 'Kazimir'),
-(21, 'nieko gero, nuobodu', 3, 'Kazimir');
+(35, 'blaaaaaa', 29, 'Kazimir'),
+(37, 'pakomentinau', 29, 'autorius'),
+(38, 'ponas bynas buvo cia', 30, 'Ponas'),
+(39, 'neidomu', 29, 'Ponas'),
+(40, 'nuuuu daaaaaa', 33, 'miroslav'),
+(41, 'kto tak napisal', 30, 'miroslav'),
+(42, '..............', 31, 'miroslav'),
+(43, 'xoxoxo', 33, 'komentatorius'),
+(44, 'ai nzn', 30, 'komentatorius');
 
 -- --------------------------------------------------------
 
@@ -129,19 +117,10 @@ CREATE TABLE `straipsniai_temos` (
 --
 
 INSERT INTO `straipsniai_temos` (`straipsnio_id`, `temos_id`) VALUES
-(5, 2),
-(5, 5),
-(2, 4),
-(2, 1),
-(2, 3),
-(2, 6),
-(3, 3),
-(4, 2),
-(4, 3),
-(4, 6),
-(6, 2),
-(7, 3),
-(7, 4);
+(29, 5),
+(30, 2),
+(31, 4),
+(33, 6);
 
 -- --------------------------------------------------------
 
@@ -188,9 +167,12 @@ CREATE TABLE `vartotojai` (
 
 INSERT INTO `vartotojai` (`id`, `username`, `vardas`, `pavarde`, `slaptazodis`, `role`, `statusas`) VALUES
 (3, 'vart3', 'Milda', 'Varnaite', 'vart3', 'Administratorius', 'Aktyvus'),
-(14, 'PetrPetras', 'Petras', 'Petrikas', 'petras', 'Autorius', 'Aktyvus'),
-(15, 'Veikejas', 'Kazkoks', 'Veikejas', 'veikejas', 'Autorius', 'Aktyvus'),
-(16, 'Kazimir', 'Kazimieras', 'Bepavardis', 'kazimir', 'StandartinisVartotojas', 'Aktyvus');
+(16, 'Kazimir', 'Kazimieras', 'Bepavardis', 'kazimir', 'StandartinisVartotojas', 'Aktyvus'),
+(17, 'PetrPetras', 'Petras', 'lalala', 'petras', 'Autorius', 'Aktyvus'),
+(18, 'autorius', 'Vardzius', 'Pavardzius', 'autorius', 'Autorius', 'Aktyvus'),
+(19, 'Ponas', 'Ponas', 'Bynas', 'ponas', 'Autorius', 'Aktyvus'),
+(20, 'komentatorius', 'Jonas', 'Zukas', 'koment', 'StandartinisVartotojas', 'Aktyvus'),
+(21, 'miroslav', 'mirka', 'bogdanov', 'mirka', 'StandartinisVartotojas', 'Aktyvus');
 
 --
 -- Indexes for dumped tables
@@ -246,19 +228,19 @@ ALTER TABLE `vartotojai`
 -- AUTO_INCREMENT for table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
 
 --
 -- AUTO_INCREMENT for table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=174;
+  MODIFY `id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=186;
 
 --
 -- AUTO_INCREMENT for table `komentarai`
 --
 ALTER TABLE `komentarai`
-  MODIFY `id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `temos`
@@ -270,7 +252,7 @@ ALTER TABLE `temos`
 -- AUTO_INCREMENT for table `vartotojai`
 --
 ALTER TABLE `vartotojai`
-  MODIFY `id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(15) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- Constraints for dumped tables
